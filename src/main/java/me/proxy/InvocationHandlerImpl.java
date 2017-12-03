@@ -7,6 +7,10 @@ import java.lang.reflect.Proxy;
 
 import me.biz.MockBizService;
 
+/**
+ * 该动态代理未涉及具体业务实现类
+ * @author Orion
+ */
 public class InvocationHandlerImpl implements InvocationHandler {
 
 	@Override
