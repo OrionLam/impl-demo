@@ -17,7 +17,7 @@
 
 	<aop:config>
 		<aop:aspect id="myaspect" ref="aroundAspect">
-			<aop:pointcut id="pointCutAround" expression="execution(* me.biz.MockServiceImpl.*(..))" />
+			<aop:pointcut id="pointCutAround" expression="execution(* me.biz.MockServiceImpl.save(me.biz.MockDTO))" />
 			<aop:around method="doRound" pointcut-ref="pointCutAround" />
 		</aop:aspect>
 	</aop:config>
