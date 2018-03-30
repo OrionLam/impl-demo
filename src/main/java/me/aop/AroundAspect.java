@@ -5,6 +5,9 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import me.biz.MockBizService;
 
 public class AroundAspect {
@@ -22,8 +25,9 @@ public class AroundAspect {
 		return obj;
 	}
 	
-	public void doAfter(JoinPoint jp) {  
-        System.out.println("log Ending method: " + jp.getTarget().getClass().getName() + "." + jp.getSignature().getName());  
+	public void doAfter(JoinPoint jp, Object retVal) {  
+        System.out.println("log Ending method: " + jp.getTarget().getClass().getName() + "." + jp.getSignature().getName());
+        System.out.println("return value: " + new GsonBuilder().create().toJson(retVal) );
     }
 	
 	public void doBefore(JoinPoint jp) {  
@@ -47,7 +51,7 @@ public class AroundAspect {
            <!--配置com.spring.service包下所有类或接口的所有方法-->  
            <aop:pointcut id="businessService" expression="execution(* com.spring.service.*.*(..))" />  
            <aop:before pointcut-ref="businessService" method="doBefore"/>  
-           <aop:after pointcut-ref="businessService" method="doAfter"/>  
+           <aop:after-returning pointcut-ref="businessService" method="doAfter" returning="retVal"/>
            <aop:around pointcut-ref="businessService" method="doAround"/>  
            <aop:after-throwing pointcut-ref="businessService" method="doThrowing" throwing="ex"/>  
        </aop:aspect>  

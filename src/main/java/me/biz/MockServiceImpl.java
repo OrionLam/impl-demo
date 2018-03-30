@@ -14,6 +14,7 @@ public class MockServiceImpl implements MockBizService {
 			dto = new MockDTO();
 		}
 		dto.setPk(UUID.randomUUID().toString());
+		dto.setName("Mock");
 		return dto;
 	}
 
