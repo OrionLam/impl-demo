@@ -5,13 +5,11 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import me.biz.MockBizService;
 
 public class AroundAspect {
-
 	public Object doRound(ProceedingJoinPoint pjp) throws Throwable {
 		System.out.println("Additional Concern Before calling actual method");
 		System.out.println("Method: "+pjp.getSignature().getName());
@@ -46,19 +44,18 @@ public class AroundAspect {
         service.queryByName("haha");
 	}
 	/**
-    <aop:config>  
-       <aop:aspect id="TestAspect" ref="aspectBean">  
-           <!--配置com.spring.service包下所有类或接口的所有方法-->  
-           <aop:pointcut id="businessService" expression="execution(* com.spring.service.*.*(..))" />  
-           <aop:before pointcut-ref="businessService" method="doBefore"/>  
-           <aop:after-returning pointcut-ref="businessService" method="doAfter" returning="retVal"/>
-           <aop:around pointcut-ref="businessService" method="doAround"/>  
-           <aop:after-throwing pointcut-ref="businessService" method="doThrowing" throwing="ex"/>  
-       </aop:aspect>  
-   </aop:config>  
-     
-   <bean id="aspectBean" class="com.spring.aop.TestAspect" />  
-   <bean id="aService" class="com.spring.service.AServiceImpl"></bean>  
-   <bean id="bService" class="com.spring.service.BServiceImpl"></bean>
+	<aop:config>
+		<aop:aspect id="TestAspect" ref="aspectBean">
+			<!--配置com.spring.service包下所有类或接口的所有方法-->
+			<aop:pointcut id="businessService" expression="execution(* com.spring.service.*.*(..))" />
+			<aop:before pointcut-ref="businessService" method="doBefore"/>
+			<aop:after-returning pointcut-ref="businessService" method="doAfter" returning="retVal"/>
+			<aop:around pointcut-ref="businessService" method="doAround"/>
+			<aop:after-throwing pointcut-ref="businessService" method="doThrowing" throwing="ex"/>
+		</aop:aspect>
+	</aop:config>
+	<bean id="aspectBean" class="com.spring.aop.TestAspect" />
+	<bean id="aService" class="com.spring.service.AServiceImpl"></bean>
+	<bean id="bService" class="com.spring.service.BServiceImpl"></bean>
     */
 }

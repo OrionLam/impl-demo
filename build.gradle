@@ -17,7 +17,6 @@ version = '0.0.1'
 // In this section you declare where to find the dependencies of your project
 repositories {
     mavenLocal() //使用$M2_HOME/conf/settings.xml中指定的本地仓库地址
-    maven { url "http://192.168.0.17:8081/nexus/content/groups/public" }
     maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
     mavenCentral()
 }
@@ -33,7 +32,12 @@ artifacts {
     archives sourcesJar
     archives javadocJar
 }
-
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+}
 
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.

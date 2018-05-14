@@ -1,4 +1,4 @@
-package me.proxy;
+﻿package me.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
