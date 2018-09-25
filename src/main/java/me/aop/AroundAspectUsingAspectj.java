@@ -9,7 +9,12 @@ import com.google.gson.GsonBuilder;
 
 import me.biz.MockBizService;
 
-public class AroundAspect {
+/**
+ * 基于Aspectj的AOP实现
+ * @author Orion
+ * 2018年9月25日
+ */
+public class AroundAspectUsingAspectj {
 	public Object doRound(ProceedingJoinPoint pjp) throws Throwable {
 		System.out.println("Additional Concern Before calling actual method");
 		System.out.println("Method: "+pjp.getSignature().getName());
