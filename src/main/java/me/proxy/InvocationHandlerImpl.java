@@ -8,7 +8,8 @@ import java.lang.reflect.Proxy;
 import me.biz.MockBizService;
 
 /**
- * 该动态代理未涉及具体业务实现类
+ * 动态代理<br>
+ * 该代理目的：运行一个没有实现类的接口
  * @author Orion
  */
 public class InvocationHandlerImpl implements InvocationHandler {
